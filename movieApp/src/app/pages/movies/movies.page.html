@@ -1,0 +1,77 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Movies</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <!-- <ion-grid>
+    <ion-row>
+      <ion-col size-sm="8" offset-sm="2" size-lg="3" offset-lg="4">
+          <ion-card *ngFor="let item of arr">
+            <img [src]=item.img>
+            <ion-card-header>
+              <ion-card-subtitle>Card Subtitle</ion-card-subtitle>
+              <ion-card-title>{{item.title}}</ion-card-title>
+            </ion-card-header>
+          
+            <ion-card-content>
+                {{item.text}}
+              <div class="ion-margin-vertical ion-text-right">
+                <ion-button mode="md" color="primary">Save</ion-button>
+                <ion-button fill="outline" color="custom" [routerLink]="['/','movie-details', item.id]"><ion-icon slot="start" name="videocam"></ion-icon>Details</ion-button>
+              </div>
+
+            </ion-card-content>
+          </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid> -->
+
+  <!-- <ion-grid>
+    <ion-row>
+      <ion-col size-sm="8" offset-sm="2" size-lg="3" offset-lg="4">
+          <ion-card *ngFor="let item of (results | async)">
+            <ion-img src="https://image.tmdb.org/t/p/w500{{item.poster_path}}"></ion-img>
+            <ion-card-header>
+              <ion-card-subtitle>Card Subtitle</ion-card-subtitle>
+              <ion-card-title>{{item.original_title}}</ion-card-title>
+            </ion-card-header>
+          
+            <ion-card-content>
+                <div>{{item.overview}}</div>
+              <div class="ion-margin-vertical ion-text-right">
+                <ion-button mode="md" color="primary">Save</ion-button>
+                <ion-button fill="outline" color="custom" [routerLink]="['/','movie-details', item.id]"><ion-icon slot="start" name="videocam"></ion-icon>Details</ion-button>
+              </div>
+
+            </ion-card-content>
+          </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid> -->
+
+  <ion-grid>
+    <ion-row>
+      <ion-col size-sm="8" offset-sm="2" size-lg="3" offset-lg="4">
+      <ion-virtual-scroll [items]="results | async" approxItemHeight="700px">
+          <ion-card *virtualItem="let item; let itemBounds = bounds;" style="max-width: 360px;">
+            <img src="https://image.tmdb.org/t/p/w500{{item.poster_path}}" [height]="485"  style="width: 360px !important;" >
+            <ion-card-header>
+              <ion-card-subtitle>Card Subtitle</ion-card-subtitle>
+              <ion-card-title>{{item.original_title}}</ion-card-title>
+            </ion-card-header>
+          
+            <ion-card-content>
+              <div class="ion-margin-vertical ion-text-right">
+                <ion-button mode="md" color="primary">Save</ion-button>
+                <ion-button fill="outline" color="custom" [routerLink]="['/','movie-details', item.id]"><ion-icon slot="start" name="videocam"></ion-icon>Details</ion-button>
+              </div>
+
+            </ion-card-content>
+          </ion-card>
+          </ion-virtual-scroll>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>
