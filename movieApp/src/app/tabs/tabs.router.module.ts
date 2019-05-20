@@ -31,7 +31,7 @@ const routes: Routes = [
     ]
   },
   {
-    path: '',
+    path: '**',
     redirectTo: '/app/hot',
     pathMatch: 'full'
   }
