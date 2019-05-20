@@ -5,7 +5,14 @@
 </ion-header-->
 
 <ion-content>
-
+    <ion-refresher slot="fixed" (ionRefresh)="refreshMovies($event)">
+        <ion-refresher-content
+          pullingIcon="arrow-dropdown"
+          pullingText="Pull to refresh"
+          refreshingSpinner="circles"
+          refreshingText="Refreshing...">
+        </ion-refresher-content>
+      </ion-refresher>
   <ion-grid>
     <ion-row>
       <ion-col size-sm="8" offset-sm="2" size-lg="3" offset-lg="4">

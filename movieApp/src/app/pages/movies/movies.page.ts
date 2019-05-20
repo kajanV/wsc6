@@ -29,7 +29,22 @@ export class MoviesPage implements OnInit {
   }
 
   showTheMovies() {
-    this.results = this.movieService.showMovies(this.type);
+    return this.results = this.movieService.showMovies(this.type);
   }
 
+  refreshMovies(event) {
+    this.showTheMovies().subscribe(
+      () => this.completeRefresh(event)
+    );
+  }
+
+  completeRefresh(event) {
+    event.target.disabled = true;
+    setTimeout( () => {
+      event.target.complete();
+    }, 1000);
+    setTimeout(() => {
+      event.target.disable = false;
+    }, 100);
+  }
 }
