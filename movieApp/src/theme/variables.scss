@@ -1,12 +1,19 @@
 // Ionic Variables and Theming. For more info, please see:
 // http://ionicframework.com/docs/theming/
 
+$colors: (
+  primary:    #387ef5,
+  secondary:  #32db64,
+  danger:     #f53d3d,
+  light:      #f4f4f4,
+  dark:       #222,
+  vibrant:    rebeccapurple,
+  bright:     #ffc125,
+  darkgreen: #0E9454
+);
+
 /** Ionic CSS Variables **/
 :root {
-  /** MovieApp **/
-  --ion-background-color: #000402;
-  --ion-font-family: "Helvetica Neue", "Roboto", sans-serif;
-  --ion-text-color: #FFFFFF;
 
   /** primary **/
   --ion-color-primary: #3880ff;
@@ -79,4 +86,50 @@
   --ion-color-light-contrast-rgb: 0, 0, 0;
   --ion-color-light-shade: #d7d8da;
   --ion-color-light-tint: #f5f6f9;
+
+  
+  /** MovieApp **/
+  --ion-background-color: #000402;
+  --ion-font-family: "Helvetica Neue", "Roboto", sans-serif;
+  --ion-text-color: #FFFFFF;
+  --ion-color-step-850: #FFF;
+}
+
+.hot-tile{
+  height: 360px !important;
+  width: 360px !important;
+}
+
+.hot-title{
+  z-index: 2;
+  position: absolute;
+  left: 5%;
+  top: 5%;
+}
+
+.details-button {
+  position: absolute;
+  left: 5%;
+  bottom: 15%;
+  margin: auto;
+  --background: #0E9454 !important;
+  --color: #fff !important;
+  --border-color: #0E9454 !important;
+  --border-radius: 4px !important;
+  opacity: 0.75;
+}
+
+.image-gradient{
+  position: relative;
+  z-index: 1;
+  height: 100%;
+  background: linear-gradient(#e66465, #9198e5) !important;
+}
+
+.icon{
+  color: #0E9454 !important;
+}
+
+.icon:active{
+  color: #fff;
 }
