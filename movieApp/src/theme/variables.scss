@@ -132,3 +132,9 @@ $colors: (
 .icon:active{
   color: #fff;
 }
+
+.card{
+  z-index: 1;
+  height: 100%;
+  background-color: linear-gradient(197deg, rgba(0, 4, 2, 1) 100%, rgba(255,255,255,1) 0%) !important;
+}
