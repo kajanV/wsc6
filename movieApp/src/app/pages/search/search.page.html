@@ -1,1 +1,40 @@
-<span style="color: red">search</span>
+<ion-searchbar debounce="200" (ionChange)="onSearchChange($event)"></ion-searchbar>
+<div *ngIf="!foundMoviesList.length" style="color: red">NO RESULTS</div>
+<!-- <ion-list *ngIf="foundMoviesList.length">
+    <ion-item *ngFor="let movie of foundMoviesList" (click)="onClickMovie(movie)">
+        <img class="" src="https://image.tmdb.org/t/p/w185{{movie.poster_path}}" style="height: 100% !important;">
+        {{movie.title}}
+    </ion-item>
+</ion-list> -->
+
+
+<ion-content>
+
+        <ion-grid>
+          <ion-row>
+            <ion-col size-sm="8" offset-sm="2" size-lg="3" offset-lg="4">
+              <ion-virtual-scroll [items]="foundMoviesList" approxItemHeight="700px">
+                <ion-card *virtualItem="let item; let itemBounds = bounds;" style="max-width: 360px;">
+      
+                  
+                  <div class="hot-tile image-gradient">
+                    <ion-card-title class="hot-title">{{item.original_title}}</ion-card-title>
+                    <img class="" src="https://image.tmdb.org/t/p/w185{{item.poster_path}}" onError="this.src='assets/icon/favicon.png'" style="height: 100% !important;">
+                    <ion-button class="details-button" [routerLink]="['/','movie-details', item.id]">
+                      <!--ion-icon slot="start" name="videocam"></ion-icon-->See details
+                    </ion-button>
+                  </div>
+      
+                  <ion-card-content>
+                    <div class="ion-margin-vertical ion-text-right">
+                      <!--ion-button mode="md" color="primary">Save</ion-button-->
+      
+                    </div>
+      
+                  </ion-card-content>
+                </ion-card>
+              </ion-virtual-scroll>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </ion-content>

@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
+import { environment } from '../../environments/environment';
 
 export enum SearchType {
   now_playing = 'movie/now_playing',
@@ -14,8 +15,8 @@ export enum SearchType {
   providedIn: 'root'
 })
 export class MovieService {
-  url = 'https://api.themoviedb.org/3/';
-  apiKey = 'ccbc9f3807aab2fdde56da16e55421a8';
+  private url = 'https://api.themoviedb.org/3/';
+  private apiKey = environment.apiKey;
 
   constructor(private http: HttpClient) { }
 
