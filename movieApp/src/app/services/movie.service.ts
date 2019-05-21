@@ -2,6 +2,9 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
+import { Network } from '@ionic-native/network/ngx';
+import { Platform } from '@ionic/angular';
+import { ToastController } from '@ionic/angular';
 
 export enum SearchType {
   now_playing = 'movie/now_playing',
@@ -16,8 +19,14 @@ export enum SearchType {
 export class MovieService {
   url = 'https://api.themoviedb.org/3/';
   apiKey = 'ccbc9f3807aab2fdde56da16e55421a8';
+  toast = null;
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private network: Network, private plt: Platform, public toastController: ToastController) {
+    this.plt.ready().then(() => {
+      // uncomment this once function is implemented
+      // this.checkNetwork();
+      });
+     }
 
    // now playing
    showMovies(type: SearchType): Observable<any> {
@@ -36,4 +45,27 @@ export class MovieService {
     );
   }
 
+  checkNetwork() {
+    const disconnectSubscription =
+    this.network.onDisconnect().subscribe(async () => {
+    console.log('network was disconnected :-(');
+    this.toast = await this.toastController.create({
+    message: 'You are offline',
+    showCloseButton: true,
+    color: 'danger'
+    });
+    this.toast.present();
+    });
+    const connectSubscription = this.network.onConnect().
+    subscribe(async () => {
+    console.log('network connected!');
+    this.toast.dismiss(); // dismiss old toast
+    this.toast = await this.toastController.create({
+    message: 'You are back online',
+    showCloseButton: true,
+    duration: 2000
+    });
+    this.toast.present();
+    });
+  }
 }
