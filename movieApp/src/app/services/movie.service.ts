@@ -5,6 +5,7 @@ import { map } from 'rxjs/operators';
 import { Network } from '@ionic-native/network/ngx';
 import { Platform } from '@ionic/angular';
 import { ToastController } from '@ionic/angular';
+import { environment } from '../../environments/environment';
 
 export enum SearchType {
   now_playing = 'movie/now_playing',
@@ -17,9 +18,9 @@ export enum SearchType {
   providedIn: 'root'
 })
 export class MovieService {
-  url = 'https://api.themoviedb.org/3/';
-  apiKey = 'ccbc9f3807aab2fdde56da16e55421a8';
   toast = null;
+  private url = 'https://api.themoviedb.org/3/';
+  private apiKey = environment.apiKey;
 
   constructor(private http: HttpClient, private network: Network, private plt: Platform, public toastController: ToastController) {
     this.plt.ready().then(() => {

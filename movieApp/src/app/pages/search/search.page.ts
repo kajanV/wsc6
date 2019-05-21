@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { SearchService } from '../../services/search.service';
 
 @Component({
   selector: 'app-search',
@@ -7,10 +8,25 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SearchPage implements OnInit {
 
-  constructor() {
-   }
+  foundMoviesList: any[] = [];
+
+  constructor(private searchService: SearchService) {
+  }
 
   ngOnInit() {
+  }
+
+  onSearchChange(evt: CustomEvent) {
+    const keyWord: string = evt.detail.value;
+    if (!keyWord.length) {
+      this.foundMoviesList = [];
+    } else {
+      this.searchService.searchMovies(keyWord).subscribe((results) => this.foundMoviesList = results);
+    }
+  }
+
+  onClickMovie(keyword: string) {
+    console.log(keyword);
   }
 
 }
