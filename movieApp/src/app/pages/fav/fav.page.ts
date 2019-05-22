@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Storage } from '@ionic/storage';
+import { StorageService } from 'src/app/services/storage.service';
+import { MovieService, SearchType } from './../../services/movie.service';
 
 @Component({
   selector: 'app-fav',
@@ -7,9 +10,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FavPage implements OnInit {
 
-  constructor() { }
+  keys = [];
+
+
+  constructor(private movieService: MovieService, private storage: Storage, private storageService: StorageService) { }
 
   ngOnInit() {
+    this.getAllFav();
+  }
+
+  getAllFav() {
+    this.storageService.readWatchLaterAll().then(item => {
+      this.keys = item;
+    });
   }
 
 }

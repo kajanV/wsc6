@@ -1,1 +1,19 @@
 <span style="color: red">fav</span>
+<ion-header>
+    <ion-toolbar>
+        <ion-title>Meine Favoriten</ion-title>
+    </ion-toolbar>
+</ion-header>
+<ion-content>
+   <ion-grid>
+        <ion-row>
+          <ion-col>
+            <ion-virtual-scroll [items]="keys">
+              <ion-item *virtualItem="let key">
+                {{ key }}
+              </ion-item>
+            </ion-virtual-scroll>
+          </ion-col>
+        </ion-row>
+   </ion-grid>
+</ion-content>

@@ -22,7 +22,7 @@ export class MovieDetailsPage implements OnInit {
   isWatchLater: boolean = false;
 
   constructor(private activatedRoute: ActivatedRoute, private movieService: MovieService,
-    private storage: Storage, private storageService: StorageService, public toastController: ToastController) { }
+  private storage: Storage, private storageService: StorageService, public toastController: ToastController) { }
 
   ngOnInit() {
     this.id = this.activatedRoute.snapshot.paramMap.get('id');
@@ -30,7 +30,6 @@ export class MovieDetailsPage implements OnInit {
     this.movieService.getDetails(this.id).subscribe(result => {
       this.information = result;
     });
-
     this.checkWatchLater();
   }
 

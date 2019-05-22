@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Storage } from '@ionic/storage';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -38,6 +39,10 @@ export class StorageService {
         return true;
       }
     });
+  }
+
+  readWatchLaterAll(): Promise<any> {
+    return this.watchLaterDb.keys();
   }
 
   deleteWatchLater(key): Promise<any> {
