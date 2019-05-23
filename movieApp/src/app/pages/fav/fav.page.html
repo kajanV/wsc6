@@ -1,19 +1,26 @@
-<span style="color: red">fav</span>
 <ion-header>
     <ion-toolbar>
         <ion-title>Meine Favoriten</ion-title>
-    </ion-toolbar>
+    </ion-toolbar>        
 </ion-header>
 <ion-content>
    <ion-grid>
+      <ion-item *ngFor="let key of keys">
         <ion-row>
-          <ion-col>
-            <ion-virtual-scroll [items]="keys">
-              <ion-item *virtualItem="let key">
-                {{ key }}
-              </ion-item>
-            </ion-virtual-scroll>
+          <ion-col size-sm="4" offset-sm="2" size-lg="2" offset-lg="4">
+          <img *ngIf="key?.poster_path; else placeholderImage" class="fadein img-fitter" style="width: 100%" [src]="'https://image.tmdb.org/t/p/w500'+key.poster_path" alt="">
           </ion-col>
         </ion-row>
+        <ion-col>
+            <h4>
+              {{key.original_title}}
+            </h4>
+            <ion-row>
+              <ion-button class="details-button" [routerLink]="['/','movie-details', key.id]">
+                See details
+            </ion-button>
+          </ion-row>
+      </ion-col>
+      </ion-item>
    </ion-grid>
 </ion-content>
