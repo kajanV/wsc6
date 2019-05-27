@@ -1,17 +1,6 @@
 // Ionic Variables and Theming. For more info, please see:
 // http://ionicframework.com/docs/theming/
 
-$colors: (
-  primary:    #387ef5,
-  secondary:  #32db64,
-  danger:     #f53d3d,
-  light:      #f4f4f4,
-  dark:       #222,
-  vibrant:    rebeccapurple,
-  bright:     #ffc125,
-  darkgreen: #0E9454
-);
-
 /** Ionic CSS Variables **/
 :root {
 
@@ -95,22 +84,36 @@ $colors: (
   --ion-color-step-850: #FFF;
 }
 
+/***********************/
+/* CUSTOM CSS */
+/***********************/
+
+/* Hot page */
 .hot-tile{
   height: 360px !important;
-  width: 360px !important;
+  min-width: 100% !important;
 }
 
 .hot-title{
   z-index: 2;
   position: absolute;
   left: 5%;
-  top: 5%;
+  top: 25%;
+  font-size: 1.25rem;
 }
 
+.hot-title-bg{
+  background: linear-gradient(to bottom, rgba(0,4,2,1) 0%, rgba(0,4,2,0.8) 50%,rgba(0,4,2,0.4) 75%, rgba(0,4,2,0.2) 90%, rgba(0,4,2,0.02) 100%) !important;
+  width: 100%;
+  height: 50%;
+  position: absolute;
+}
+
+/* Details page */
 .details-button {
   position: absolute;
   left: 5%;
-  bottom: 15%;
+  bottom: 10%;
   margin: auto;
   --background: #0E9454 !important;
   --color: #fff !important;
@@ -119,12 +122,15 @@ $colors: (
   opacity: 0.75;
 }
 
-.image-gradient{
-  z-index: 1;
-  height: 100%;
-  background: linear-gradient(#e66465, #9198e5) !important;
+.vote-average{
+  text-align: right;
 }
 
+.details-poster{
+  height: 360px !important;
+}
+
+/* hot page   */
 .icon{
   color: #0E9454 !important;
 }
@@ -133,8 +139,23 @@ $colors: (
   color: #fff;
 }
 
-.card{
-  z-index: 1;
+img{
+  z-index: 5;
+  width: 100%;
   height: 100%;
-  background-color: linear-gradient(197deg, rgba(0, 4, 2, 1) 100%, rgba(255,255,255,1) 0%) !important;
+  --background: linear-gradient(150deg, rgba(0,4,2,1) 0%, rgba(0,4,2,0.62) 42%, rgba(0,4,2,0.1) 100%) !important;
+  --background-repeat: no-repeat;
+  --background-blend-mode: overlay;
+  --background-position: center;
+  --background-size: cover;
 }
+
+// all tabs
+ion-tab-bar {
+  --background: linear-gradient(to bottom, rgba(0,4,2,0.1) 0%, rgba(0,4,2,0.62) 58%, rgba(0,4,2,1) 100%);
+  --border: 0px !important;
+}
+
+
+
+
