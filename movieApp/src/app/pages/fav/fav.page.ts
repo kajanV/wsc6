@@ -21,7 +21,7 @@ export class FavPage implements OnInit {
   }
 
   getAllFav() {
-    this.storageService.readWatchLaterAll().then(item => {
+    return this.storageService.readWatchLaterAll().then(item => {
       item.forEach(element => {
         this.movieService.getDetails(element).subscribe(result => {
           console.log(result);
@@ -29,6 +29,22 @@ export class FavPage implements OnInit {
         });
       });
     });
+  }
+
+  refreshFav(event) {
+    this.getAllFav().then(
+      () => this.completeRefresh(event)
+    );
+  }
+
+  completeRefresh(event) {
+    event.target.disabled = true;
+    setTimeout( () => {
+      event.target.complete();
+    }, 1000);
+    setTimeout(() => {
+      event.target.disable = false;
+    }, 100);
   }
 
 }

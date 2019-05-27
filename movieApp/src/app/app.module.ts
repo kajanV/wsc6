@@ -14,10 +14,12 @@ import { IonicStorageModule } from '@ionic/storage';
 
 import { Network } from '@ionic-native/network/ngx';
 
+import { IonicRatingModule } from 'ionic4-rating';
+
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
-  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, HttpClientModule, IonicStorageModule.forRoot()],
+  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, HttpClientModule, IonicStorageModule.forRoot(), IonicRatingModule],
   providers: [
     StatusBar,
     SplashScreen,

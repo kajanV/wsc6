@@ -9,6 +9,8 @@ import { StorageService } from 'src/app/services/storage.service';
 
 import { ToastController } from '@ionic/angular';
 
+import { IonicRatingModule } from 'ionic4-rating';
+
 @Component({
   selector: 'app-movie-details',
   templateUrl: './movie-details.page.html',
