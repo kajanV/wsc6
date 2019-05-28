@@ -10,6 +10,7 @@ import { StorageService } from 'src/app/services/storage.service';
 import { ToastController } from '@ionic/angular';
 
 import { IonicRatingModule } from 'ionic4-rating';
+import { YoutubeVideoPlayer } from '@ionic-native/youtube-video-player/ngx';
 
 @Component({
   selector: 'app-movie-details',
@@ -20,17 +21,27 @@ export class MovieDetailsPage implements OnInit {
 
   id = '';
   information = null;
+  possibleYoutubeTrailers = [];
 
   isWatchLater: boolean = false;
 
-  constructor(private activatedRoute: ActivatedRoute, private movieService: MovieService,
-  private storage: Storage, private storageService: StorageService, public toastController: ToastController) { }
+  constructor(private activatedRoute: ActivatedRoute,
+              private movieService: MovieService,
+              private storage: Storage,
+              private storageService: StorageService,
+              public toastController: ToastController,
+              private youtube: YoutubeVideoPlayer) { }
 
   ngOnInit() {
     this.id = this.activatedRoute.snapshot.paramMap.get('id');
+
     // Get movie details
     this.movieService.getDetails(this.id).subscribe(result => {
       this.information = result;
+    });
+
+    this.movieService.getYoutubeMovies(this.id).subscribe(result => {
+      this.possibleYoutubeTrailers = result.filter(res => res.site === 'YouTube');
     });
     this.checkWatchLater();
   }
@@ -61,6 +72,10 @@ export class MovieDetailsPage implements OnInit {
       this.isWatchLater = false;
       this.presentToast('Removed movie from your Watch Later list.');
     });
+  }
+
+  displayTrailer(trailer) {
+    this.youtube.openVideo(trailer.key);
   }
 
 }

@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { map, filter } from 'rxjs/operators';
 import { Network } from '@ionic-native/network/ngx';
 import { Platform } from '@ionic/angular';
 import { ToastController } from '@ionic/angular';
@@ -44,6 +44,13 @@ export class MovieService {
        return results;
      })
     );
+  }
+
+  getYoutubeMovies(id): Observable<any> {
+    // https://api.themoviedb.org/3/movie/777/videos?api_key=ccbc9f3807aab2fdde56da16e55421a8&language=en-US
+    const url = `${this.url}movie/${id}/videos?api_key=${this.apiKey}&language=en-US`;
+    return this.http.get(url)
+      .pipe(map((results: any) => results.results));
   }
 
   checkNetwork() {

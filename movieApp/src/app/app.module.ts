@@ -15,6 +15,7 @@ import { IonicStorageModule } from '@ionic/storage';
 import { Network } from '@ionic-native/network/ngx';
 
 import { IonicRatingModule } from 'ionic4-rating';
+import { YoutubeVideoPlayer } from '@ionic-native/youtube-video-player/ngx';
 
 @NgModule({
   declarations: [AppComponent],
@@ -24,7 +25,8 @@ import { IonicRatingModule } from 'ionic4-rating';
     StatusBar,
     SplashScreen,
     Network,
-    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
+    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
+    YoutubeVideoPlayer
   ],
   bootstrap: [AppComponent]
 })

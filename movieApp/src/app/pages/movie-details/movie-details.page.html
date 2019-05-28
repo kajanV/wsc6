@@ -36,5 +36,8 @@
     <ion-row>
       <div>{{information?.overview}}</div>
     </ion-row>
+    <ion-row *ngFor="let trailer of possibleYoutubeTrailers; index as i" class="trailer-button-row">
+      <ion-button (click)="displayTrailer(trailer)">Trailer {{i + 1}}</ion-button>
+    </ion-row>
   </ion-grid>
 </ion-content>
